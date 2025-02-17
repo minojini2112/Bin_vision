@@ -1,11 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-const Para=()=>{
-    return(
-        <div>
-            <p className="ml-[300px]">hello world</p>
-        </div>
-    );
-}
+import ImageUpload from "./Components/Homepage/ImageUpload"; // Ensure path matches your file structure
+
+const Para = () => {
+  return (
+    <div>
+      <ImageUpload />
+    </div>
+  );
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Para/>)
+root.render(<Para />);
