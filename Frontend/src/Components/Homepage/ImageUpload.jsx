@@ -23,10 +23,16 @@ const ImageUpload = () => {
         body: formData,
       });
 
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
       const data = await response.json();
-      setResult(data);
+      console.log("API Response:", data); // Debugging
+      setResult(data.classification); // Ensure correct state update
     } catch (error) {
       console.error("Error uploading file:", error);
+      setResult("Error processing image"); // Show error in UI
     }
   };
 
@@ -39,7 +45,7 @@ const ImageUpload = () => {
       {result && (
         <div className="mt-4">
           <h2>Classification Result:</h2>
-          <p className="text-xl font-semibold">{result.classification}</p>
+          <p className="text-xl font-semibold">{result}</p>
         </div>
       )}
     </div>
